@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using PasionMidtermStore.Data;
 using PasionMidtermStore.Models;
 
- 
-
 namespace PasionMidtermStore.Controllers
 
 {
