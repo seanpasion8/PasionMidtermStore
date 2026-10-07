@@ -23,6 +23,7 @@
                     <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-sm btn-warning">Edit</a>
                     <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-sm btn-danger"
                        onclick="return confirm('Delete this product?')">Delete</a>
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@p.Id" class="btn btn-sm btn-success">Add to Cart</a>
                 </td>
             </tr>
         }
