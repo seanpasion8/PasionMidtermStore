@@ -1,20 +1,33 @@
 @model List<PasionMidtermStore.Models.CartItem>
 
 <h1>Cart</h1>
+@{
+    decimal total = 0;
+}
 
 <table class="table table-bordered">
     <thead>
-        <tr><th>Product Name</th><th>Price</th><th>Quantity</th></tr>
+        <tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>Actions</th></tr>
     </thead>
     <tbody>
 
     @foreach (var p in Model)
         {
+            total += p.Price * p.Quantity;
             <tr>
                 <td>@p.ProductName</td>                
                 <td>@p.Price</td>
-                <td>@p.Quantity</td>
+                <td>
+                    <form asp-action="Update" method="post">
+                    <input type="hidden" name="Id" value="@p.Id">
+                    <input type="number" name="Quantity" value="@p.Quantity">
+                    <button type="submit">Update</button>
+                </form>
+                    <a asp-action="Remove" asp-route-id="@p.Id" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Remove this product?')">Remove</a> 
+                </td>
             </tr>
         }
     </tbody>
 </table>
+<h3>Total Amount: @total</h3>

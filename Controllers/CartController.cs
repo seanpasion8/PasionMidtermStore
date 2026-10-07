@@ -33,5 +33,26 @@ namespace PasionMidtermStore.Controllers
             _db.SaveChanges();
              return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Update (int Id, int Quantity)
+        {
+          var cartItem = _db.CartItems.Find(Id);
+          cartItem.Quantity = Quantity;
+          _db.SaveChanges();
+          return RedirectToAction("Index"); 
+        }
+
+        public IActionResult Remove (int Id)
+        {
+            var cartItem = _db.CartItems.Find(Id);
+            if (cartItem != null)
+            {
+            _db.CartItems.Remove(cartItem);
+            _db.SaveChanges();   
+            }
+            return RedirectToAction("Index");
+
+        }
 }
 }
