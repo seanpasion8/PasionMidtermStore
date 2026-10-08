@@ -16,7 +16,7 @@
             total += p.Price * p.Quantity;
             <tr>
                 <td>@p.ProductName</td>                
-                <td>@p.Price</td>
+                <td>₱@p.Price</td>
                 <td>
                     <form asp-action="Update" method="post">
                     <input type="hidden" name="Id" value="@p.Id">
@@ -33,4 +33,4 @@
         }
     </tbody>
 </table>
-<h3>Total Amount: @total</h3>
+<h3>Total Amount: ₱@total</h3>
